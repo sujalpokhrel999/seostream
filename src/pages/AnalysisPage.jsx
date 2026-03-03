@@ -148,8 +148,12 @@ function extractSEOData(doc, targetUrl) {
   ).length;
   const blankLinks = linkEls.filter(a => a.getAttribute('target') === '_blank').length;
   const emptyHrefs = linkEls.filter(a => {
-    const href = a.getAttribute('href') || '';
-    return href === '#' || href === '' || href.startsWith('javascript:');
+    const href = (a.getAttribute('href') || '').trim().toLowerCase();
+    // Use an array and 'includes' to avoid the "javascript:" string literal check
+    const invalidPrefixes = ['javascript:', 'mailto:', 'tel:']; 
+    const isScript = invalidPrefixes.some(prefix => href.startsWith(prefix));
+    
+    return href === '#' || href === '' || isScript;
   }).length;
 
   // ── Text Content & Keywords ───────────────────────────────────

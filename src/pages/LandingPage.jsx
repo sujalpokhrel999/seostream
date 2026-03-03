@@ -17,11 +17,11 @@ const faqs = [
   { q: "How do you source your keyword data?", a: "We aggregate search volume from multiple first-party sources and refresh monthly, giving you accurate metrics across 40+ languages and regions." },
 ];
 
-const testimonials = [
-  { quote: "We cut the time our team spends on audits by two-thirds. The SERP tracker alone pays for the subscription.", name: "Priya M.", role: "Head of SEO, Lattice Agency", initial: "P" },
-  { quote: "Finally an SEO suite that doesn't feel like it was designed in 2011. Clean, fast, and the data is genuinely accurate.", name: "Tom W.", role: "Founder, Waymark Digital", initial: "T" },
-  { quote: "The schema generator saved us about 40 hours of developer time on a large e-commerce migration. Outstanding.", name: "Leila A.", role: "Technical SEO Lead, Shopvault", initial: "L" },
-];
+// const testimonials = [
+//   { quote: "We cut the time our team spends on audits by two-thirds. The SERP tracker alone pays for the subscription.", name: "Priya M.", role: "Head of SEO, Lattice Agency", initial: "P" },
+//   { quote: "Finally an SEO suite that doesn't feel like it was designed in 2011. Clean, fast, and the data is genuinely accurate.", name: "Tom W.", role: "Founder, Waymark Digital", initial: "T" },
+//   { quote: "The schema generator saved us about 40 hours of developer time on a large e-commerce migration. Outstanding.", name: "Leila A.", role: "Technical SEO Lead, Shopvault", initial: "L" },
+// ];
 
 export default function LandingPage() {
   const [activeFaq, setActiveFaq] = useState(null);
@@ -170,33 +170,43 @@ export default function LandingPage() {
 
           {/* FAQ */}
           <section id="faq" className="lp-faq" aria-labelledby="faq-heading">
-            <div className="lp-faq-inner">
-              <div className="lp-section-label">FAQ</div>
-              <h2 id="faq-heading">
-                Common <em>questions.</em>
-              </h2>
-              <p className="lp-faq-sub">Everything you need to know about SEOStream. Can't find the answer you're looking for? Reach out to our support team.</p>
-              <div role="list">
-                {faqs.map((faq, i) => (
-                  <div
-                    key={i}
-                    className={`lp-faq-item ${activeFaq === i ? 'open' : ''}`}
-                    role="listitem"
-                    onClick={() => setActiveFaq(activeFaq === i ? null : i)}
-                    aria-expanded={activeFaq === i}
-                  >
-                    <div className="lp-faq-question">
-                      <span>{faq.q}</span>
-                      <span className="lp-faq-icon" aria-hidden="true">{activeFaq === i ? '−' : '+'}</span>
-                    </div>
-                    {activeFaq === i && (
-                      <p className="lp-faq-answer">{faq.a}</p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+  <div className="lp-faq-inner">
+    <div className="lp-section-label">FAQ</div>
+    <h2 id="faq-heading">
+      Common <em>questions.</em>
+    </h2>
+    <p className="lp-faq-sub">Everything you need to know about SEOStream. Can't find the answer you're looking for? Reach out to our support team.</p>
+    
+    <div className="lp-faq-list"> {/* Removed role="list" to avoid role conflicts */}
+      {faqs.map((faq, i) => (
+        <div
+          key={i}
+          className={`lp-faq-item ${activeFaq === i ? 'open' : ''}`}
+          role="button" // Changed from listitem to button to support aria-expanded
+          tabIndex={0}  // Allows keyboard users to focus the item
+          onClick={() => setActiveFaq(activeFaq === i ? null : i)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setActiveFaq(activeFaq === i ? null : i);
+            }
+          }}
+          aria-expanded={activeFaq === i}
+        >
+          <div className="lp-faq-question">
+            <span>{faq.q}</span>
+            <span className="lp-faq-icon" aria-hidden="true">
+              {activeFaq === i ? '−' : '+'}
+            </span>
+          </div>
+          {activeFaq === i && (
+            <p className="lp-faq-answer">{faq.a}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
         </main>
       </div>
     </>
