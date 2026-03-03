@@ -262,64 +262,42 @@ export default function AnalysisPage() {
 
   useEffect(() => {
     if (!targetUrl) { navigate('/'); return; }
-
+  
     const analyze = async () => {
       try {
         setLoading(true);
-        setStatus('Connecting to target…');
-
-        // Proxy chain — tries each in order until one works
-        const proxies = [
-          async (url) => {
-            const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(url)}`);
-            if (!res.ok) throw new Error(`corsproxy.io: ${res.status}`);
-            return res.text();
-          },
-          async (url) => {
-            const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`);
-            if (!res.ok) throw new Error(`codetabs: ${res.status}`);
-            return res.text();
-          },
-          async (url) => {
-            const res = await fetch(`https://thingproxy.freeboard.io/fetch/${url}`);
-            if (!res.ok) throw new Error(`thingproxy: ${res.status}`);
-            return res.text();
-          },
-        ];
-
-        let html = null;
-        let lastError = null;
-
-        for (let i = 0; i < proxies.length; i++) {
-          setStatus(`Fetching via proxy ${i + 1} of ${proxies.length}…`);
-          try {
-            html = await proxies[i](targetUrl);
-            if (html && html.trim().length > 100) break;
-          } catch (err) {
-            lastError = err;
-          }
+        setStatus('Connecting to target via Vercel Edge…');
+  
+        // 1. Call your custom Vercel Proxy instead of the broken public ones
+        const response = await fetch(`/api/proxy?url=${encodeURIComponent(targetUrl)}`);
+        
+        if (!response.ok) {
+          throw new Error(`Proxy error: ${response.status} ${response.statusText}`);
         }
-
+  
+        const html = await response.text();
+  
+        // 2. Safety check for empty or failed responses
         if (!html || html.trim().length < 100) {
-          throw new Error(
-            `All proxies failed to fetch the page. This can happen on localhost due to CORS restrictions.\n\nTry deploying to Vercel, or test with a public URL.\n\nLast error: ${lastError?.message || 'unknown'}`
-          );
+          throw new Error("The target site returned an empty response or blocked the request.");
         }
-
+  
         setStatus('Parsing DOM…');
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-
+  
         setStatus('Extracting SEO data…');
         const result = extractSEOData(doc, targetUrl);
+        
         setSeo(result);
         setLoading(false);
       } catch (err) {
-        setError(err.message);
+        console.error("Scraping error:", err);
+        setError(err.message || "An unexpected error occurred.");
         setLoading(false);
       }
     };
-
+  
     analyze();
   }, [targetUrl, navigate]);
 
