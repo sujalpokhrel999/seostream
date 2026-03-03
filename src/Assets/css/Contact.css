@@ -1,0 +1,137 @@
+/* Contact.css */
+.contact-page {
+    background: linear-gradient(135deg, #ffffff 0%, var(--lavender) 100%);
+    min-height: 80vh;
+    padding: 80px 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  
+  /* Info Section */
+  .contact-tag {
+    color: var(--slate-grey);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+  }
+  
+  .contact-info h1 {
+    font-size: 3.5rem;
+    color: var(--dark-teal);
+    line-height: 1.1;
+    margin: 20px 0;
+    letter-spacing: -0.03em;
+  }
+  
+  .contact-info p {
+    font-size: 1.2rem;
+    color: var(--slate-grey);
+    margin-bottom: 40px;
+  }
+  
+  .info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .info-item strong {
+    display: block;
+    color: var(--dark-teal);
+    font-size: 1rem;
+  }
+  
+  .info-item p {
+    margin: 5px 0 0 0;
+    font-size: 1rem;
+    color: var(--slate-grey);
+  }
+  
+  /* Form Card */
+  .contact-form-card {
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(11, 57, 72, 0.15);
+    border: 1px solid var(--pale-slate);
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--dark-teal);
+    font-size: 0.9rem;
+  }
+  
+  .form-group input, 
+  .form-group select, 
+  .form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid var(--lavender);
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s;
+    background-color: #fcfcff;
+  }
+  
+  .form-group input:focus, 
+  .form-group textarea:focus {
+    border-color: var(--pale-slate-2);
+    background-color: white;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--dark-teal);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    margin-top: 10px;
+  }
+  
+  .submit-btn:hover {
+    background: var(--slate-grey);
+    transform: translateY(-2px);
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+    
+    .contact-info h1 {
+      font-size: 2.5rem;
+    }
+  
+    .contact-form-card {
+      padding: 30px;
+    }
+  }

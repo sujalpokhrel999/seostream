@@ -1,0 +1,57 @@
+/* header.css - SEO Stream Brand Update */
+:root {
+  --lavender: #d9dbf1;
+  --pale-slate: #d0cdd7;
+  --dark-teal: #0b3948;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--pale-slate);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--dark-teal);
+  letter-spacing: -0.02em;
+}
+
+.main-nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--dark-teal);
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: var(--slate-grey);
+}
+
+/* Updated Button to use the Palette */
+.btn-secondary {
+  padding: 10px 24px;
+  background-color: var(--lavender);
+  border: 1px solid var(--pale-slate);
+  color: var(--dark-teal);
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--pale-slate);
+  border-color: var(--pale-slate-2);
+}

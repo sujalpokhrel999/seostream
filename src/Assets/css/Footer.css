@@ -1,0 +1,82 @@
+/* footer.css - SEO Stream Brand Update */
+:root {
+  --lavender: #d9dbf1;
+  --pale-slate: #d0cdd7;
+  --pale-slate-2: #acb0bd;
+  --slate-grey: #416165;
+  --dark-teal: #0b3948;
+}
+
+.footer-content {
+  background-color: var(--dark-teal); /* Brand primary dark */
+  color: #ffffff;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--slate-grey);
+}
+
+.footer-brand {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+.footer-brand h3 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: var(--lavender); /* Soft highlight for the brand name */
+}
+
+.footer-brand p {
+  font-size: 16px;
+  color: var(--pale-slate); /* Readable secondary text */
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.footer-links div {
+  flex: 1;
+  min-width: 180px;
+}
+
+.footer-links h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-links a {
+  display: block;
+  color: var(--pale-slate-2);
+  text-decoration: none;
+  font-size: 16px;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--lavender);
+  padding-left: 5px; /* Subtle interaction hint */
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+  background-color: #051a21; /* Slightly darker than teal for contrast */
+  color: var(--pale-slate-2);
+  padding: 25px;
+  text-align: center;
+  font-size: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}

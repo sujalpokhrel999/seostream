@@ -1,0 +1,121 @@
+/* Blog.css */
+.blog-page {
+    padding: 60px 20px;
+  }
+  
+  .blog-header {
+    margin-bottom: 50px;
+    border-bottom: 2px solid var(--lavender);
+    padding-bottom: 30px;
+  }
+  
+  .blog-header h1 {
+    color: var(--dark-teal);
+    font-size: 2.5rem;
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  
+  .blog-card {
+    background: white;
+    padding: 30px;
+    border: 1px solid var(--pale-slate);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+  
+  .blog-card:hover {
+    border-color: var(--dark-teal);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(11, 57, 72, 0.05);
+  }
+  
+  .post-date {
+    font-size: 0.85rem;
+    color: var(--slate-grey);
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .post-title-link {
+    text-decoration: none;
+    color: var(--dark-teal);
+  }
+  
+  .blog-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+  
+  .blog-card p {
+    color: var(--slate-grey);
+    font-size: 0.95rem;
+    flex-grow: 1; /* Pushes the 'Read More' to the bottom */
+  }
+  
+  .read-more {
+    margin-top: 20px;
+    text-decoration: none;
+    color: var(--dark-teal);
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  
+  /* Detail Page Styles */
+  .blog-detail {
+    max-width: 800px;
+    padding: 80px 20px;
+  }
+  
+  .back-link {
+    text-decoration: none;
+    color: var(--slate-grey);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 40px;
+  }
+  
+  .post-meta {
+    color: var(--slate-grey);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .post-full-title {
+    font-size: 3rem;
+    color: var(--dark-teal);
+    margin: 15px 0 40px 0;
+    line-height: 1.1;
+  }
+  
+  .post-content {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #333;
+  }
+  
+  .post-content h2 {
+    margin-top: 40px;
+    color: var(--dark-teal);
+  }
+  
+  .post-content ul {
+    margin: 20px 0;
+    padding-left: 20px;
+  }
+  
+  .post-footer {
+    margin-top: 60px;
+    padding: 40px;
+    background: var(--lavender);
+    border-radius: 12px;
+    text-align: center;
+  }

@@ -1,0 +1,193 @@
+/* Tools.css */
+.tools-container {
+    padding: 60px 0;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .tools-hero {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 0 20px;
+  }
+  
+  .tools-hero h1 {
+    color: var(--dark-teal);
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .tools-hero p {
+    color: var(--slate-grey);
+    font-size: 1.2rem;
+  }
+  
+  .tools-wrapper {
+    padding: 0 20px;
+  }
+  
+  .category-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate-grey);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--lavender);
+  }
+  
+  .tool-category-group {
+    margin-bottom: 50px;
+  }
+  
+  /* Row-based Layout */
+  .tool-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .tool-row-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    background: white;
+    border: 1px solid var(--pale-slate);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+  }
+  
+  .tool-row-card:hover {
+    border-color: var(--dark-teal);
+    background-color: #fafaff;
+  }
+  
+  .tool-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 5px;
+  }
+  
+  .tool-title-wrap h3 {
+    color: var(--dark-teal);
+    font-size: 1.3rem;
+    margin: 0;
+  }
+  
+  .tool-badge {
+    background: var(--lavender);
+    color: var(--dark-teal);
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+  }
+  
+  .tool-info p {
+    color: var(--slate-grey);
+    margin: 0;
+  }
+  
+  .tool-btn {
+    text-decoration: none;
+    background: var(--dark-teal);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  /* Detail Page Styles */
+  .tool-detail-page {
+    background: linear-gradient(180deg, var(--lavender) 0%, #ffffff 400px);
+    min-height: 100vh;
+    padding: 60px 20px;
+  }
+  
+  .detail-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .detail-split {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 60px;
+    margin-top: 40px;
+  }
+  
+  .tagline {
+    font-size: 1.4rem;
+    color: var(--slate-grey);
+    margin-bottom: 40px;
+  }
+  
+  .detail-main h1 {
+    font-size: 3.5rem;
+    color: var(--dark-teal);
+    margin: 10px 0;
+  }
+  
+  .detail-description h3, .features-list h3 {
+    color: var(--dark-teal);
+    margin-bottom: 15px;
+  }
+  
+  .features-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .features-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--lavender);
+    color: var(--slate-grey);
+  }
+  
+  .features-list li::before {
+    content: "✓";
+    color: var(--dark-teal);
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  /* Sidebar Action Card */
+  .action-card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid var(--pale-slate);
+    box-shadow: 0 20px 40px rgba(11, 57, 72, 0.1);
+    position: sticky;
+    top: 40px;
+  }
+  
+  .launch-btn {
+    display: block;
+    text-align: center;
+    background: var(--dark-teal);
+    color: white;
+    text-decoration: none;
+    padding: 18px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-top: 20px;
+  }
+  
+  .security-note {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--pale-slate-2);
+    margin-top: 15px;
+  }
+  
+  @media (max-width: 850px) {
+    .detail-split { grid-template-columns: 1fr; }
+    .tool-row-card { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .detail-main h1 { font-size: 2.5rem; }
+  }
