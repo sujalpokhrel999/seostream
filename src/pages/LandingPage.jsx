@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import '../Assets/css/LandingPage.css'
 const LandingPage = () => {
   const [activeFaq, setActiveFaq] = useState(null);
