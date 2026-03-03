@@ -387,7 +387,7 @@ export default function AnalysisPage() {
 
         {/* Score summary */}
         <div className="score-row">
-          <div className="score-card">
+          <div className={`score-card ${scoreClass}`}>
             <div className="score-card-label">Overall Score</div>
             <div className={`score-card-value ${scoreClass}`}>
               {seo.score}<span style={{fontSize:14,fontWeight:400}}>/100</span>
@@ -396,17 +396,17 @@ export default function AnalysisPage() {
               {scoreClass === 'good' ? 'Good' : scoreClass === 'average' ? 'Needs work' : 'Poor'}
             </div>
           </div>
-          <div className="score-card">
+          <div className={`score-card ${failCount > 0 ? 'poor' : 'good'}`}>
             <div className="score-card-label">Critical Issues</div>
             <div className={`score-card-value ${failCount > 0 ? 'fail' : 'pass'}`}>{failCount}</div>
             <div className="score-card-sub">{failCount === 0 ? 'None' : 'Fix these first'}</div>
           </div>
-          <div className="score-card">
+          <div className={`score-card ${warnCount > 0 ? 'average' : 'good'}`}>
             <div className="score-card-label">Warnings</div>
-            <div className={`score-card-value ${warnCount > 3 ? 'warn' : warnCount > 0 ? 'warn' : 'pass'}`}>{warnCount}</div>
+            <div className={`score-card-value ${warnCount > 0 ? 'warn' : 'pass'}`}>{warnCount}</div>
             <div className="score-card-sub">{warnCount === 0 ? 'All clear' : 'Review needed'}</div>
           </div>
-          <div className="score-card">
+          <div className={`score-card neutral`}>
             <div className="score-card-label">Word Count</div>
             <div className={`score-card-value ${seo.wordCount < 300 ? 'warn' : 'pass'}`}>
               {seo.wordCount.toLocaleString()}
@@ -422,7 +422,9 @@ export default function AnalysisPage() {
             <div className="issue-list">
               {issues.map((issue, i) => (
                 <div key={i} className="issue-item">
-                  <div className={`issue-dot ${issue.type}`} />
+                  <div className={`issue-icon ${issue.type}`}>
+                    {issue.type === 'fail' ? '✕' : issue.type === 'warn' ? '!' : issue.type === 'pass' ? '✓' : 'i'}
+                  </div>
                   <div>
                     <div className="issue-text">{issue.text}</div>
                     <div className="issue-hint">{issue.hint}</div>
@@ -635,15 +637,9 @@ export default function AnalysisPage() {
                       <div style={{display:'flex',justifyContent:'space-between',fontSize:12,color:'var(--text-muted)',marginBottom:8}}>
                         <span>Internal</span><span>External</span>
                       </div>
-                      <div style={{display:'flex',height:8,borderRadius:4,overflow:'hidden',background:'var(--surface-2)'}}>
-                        <div style={{
-                          width:`${(seo.internalLinks/seo.totalLinks)*100}%`,
-                          background:'var(--pass)', transition:'width 1s ease'
-                        }} />
-                        <div style={{
-                          width:`${(seo.externalLinks/seo.totalLinks)*100}%`,
-                          background:'var(--accent)', transition:'width 1s ease'
-                        }} />
+                      <div className="link-ratio-bar">
+                        <div className="link-ratio-internal" style={{width:`${(seo.internalLinks/seo.totalLinks)*100}%`}} />
+                        <div className="link-ratio-external" style={{width:`${(seo.externalLinks/seo.totalLinks)*100}%`}} />
                       </div>
                       <div style={{display:'flex',gap:16,marginTop:8,fontSize:11,color:'var(--text-muted)'}}>
                         <span><span style={{color:'var(--pass)'}}>■</span> Internal ({seo.internalLinks})</span>
