@@ -263,14 +263,14 @@ const SocialPreviewPage = () => {
     setSeo(null);
 
     // Validate URL before fetching
-    let parsedUrl;
-    try {
-      parsedUrl = new URL(url);
-    } catch {
-      setError('Please enter a valid URL including https://');
-      setLoading(false);
-      return;
-    }
+    // Validate URL before fetching
+try {
+  new URL(url); // This will throw an error if the URL is invalid
+} catch {
+  setError('Please enter a valid URL including https://');
+  setLoading(false);
+  return;
+}
 
     try {
       const response = await fetch(`/api/proxy?url=${encodeURIComponent(url)}`);
