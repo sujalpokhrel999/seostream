@@ -1,12 +1,14 @@
 import React, { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Assets/css/LandingPage.css'
+import { Link } from 'react-router-dom';
+
 const tools = [
-  { num: "01", icon: "◎", title: "Technical Auditor", desc: "Identify crawl errors, broken links, and Core Web Vital failures before Google does." },
-  { num: "02", icon: "↗", title: "Keyword Explorer", desc: "Discover high-volume, low-competition search terms with intent-based filtering." },
-  { num: "03", icon: "⌁", title: "Backlink Monitor", desc: "Track your domain authority and uncover toxic links harming your rankings." },
-  { num: "04", icon: "◈", title: "SERP Tracker", desc: "Monitor your keyword positions across 190 countries and search engines." },
-  { num: "05", icon: "{ }", title: "Schema Generator", desc: "Generate valid structured data markup in seconds — no dev required." },
+  { num: "01", icon: "◎", title: "Technical Auditor", desc: "Identify crawl errors, broken links, and Core Web Vital failures before Google does.", path: "" },
+  { num: "02", icon: "↗", title: "Keyword Explorer", desc: "Discover high-volume, low-competition search terms with intent-based filtering.", path: "" },
+  { num: "03", icon: "⌁", title: "Backlink Monitor", desc: "Track your domain authority and uncover toxic links harming your rankings.", path: "" },
+  { num: "04", icon: "◈", title: "Og visualizer", desc: "See how your og tags are being visible when shared." , path: "/social-preview"},
+  { num: "05", icon: "{ }", title: "Schema Generator", desc: "Generate valid structured data markup in seconds — no dev required.", path: ""},
 ];
 
 const faqs = [
@@ -87,17 +89,31 @@ export default function LandingPage() {
                 Five precision tools covering every layer of organic search — from crawl health to structured data. Built for professionals who value accuracy over noise.
               </p>
             </div>
-            <div className="lp-tools-grid">
-              {tools.map((tool, i) => (
-                <article className="lp-tool-card" key={i}>
-                  <div className="lp-tool-number">{tool.num}</div>
-                  <span className="lp-tool-icon" aria-hidden="true">{tool.icon}</span>
-                  <h3>{tool.title}</h3>
-                  <p>{tool.desc}</p>
-                  <div className="lp-tool-arrow" aria-hidden="true">→</div>
-                </article>
-              ))}
-            </div>
+<div className="lp-tools-grid">
+  {tools.map((tool, i) => {
+    const CardContent = (
+      <>
+        <div className="lp-tool-number">{tool.num}</div>
+        <span className="lp-tool-icon" aria-hidden="true">{tool.icon}</span>
+        <h3>{tool.title}</h3>
+        <p>{tool.desc}</p>
+        <div className="lp-tool-arrow" aria-hidden="true">
+          {tool.path ? "→" : "Coming Soon"}
+        </div>
+      </>
+    );
+
+    return tool.path ? (
+      <Link to={tool.path} key={i} className="lp-tool-card linked">
+        {CardContent}
+      </Link>
+    ) : (
+      <article className="lp-tool-card locked" key={i}>
+        {CardContent}
+      </article>
+    );
+  })}
+</div>
           </section>
 
           {/* STATS */}

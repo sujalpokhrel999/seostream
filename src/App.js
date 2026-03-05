@@ -8,10 +8,13 @@ import ToolDetails from './pages/ToolDetails'
 import Contact from './pages/Contact';
 import LandingPage from './pages/LandingPage'
 import AnalysisPage from './pages/AnalysisPage'
+import SocialPreviewPage from './pages/SocialPreviewPage'
+import ScrollToTop from "./components/ScrollToTop";
 function App() {
   return (
     <Router>
       <Layout>
+      <ScrollToTop /> 
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/analyze" element={<AnalysisPage />} />
@@ -21,6 +24,7 @@ function App() {
           <Route path="/tools" element={<Tools />} />
           <Route path="/tools/:slug" element={<ToolDetails />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/social-preview" element={<SocialPreviewPage />} />
         </Routes>
       </Layout>
     </Router>
