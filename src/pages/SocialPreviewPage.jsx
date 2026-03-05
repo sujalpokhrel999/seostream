@@ -262,12 +262,10 @@ const SocialPreviewPage = () => {
     setError(null);
     setSeo(null);
 
-    // Validate URL before fetching
-    // Validate URL before fetching
 try {
-  new URL(url); // This will throw an error if the URL is invalid
+  new URL(url); 
 } catch {
-  setError('Please enter a valid URL including https://');
+  setError('Please enter a valid URL (including https://)');
   setLoading(false);
   return;
 }
@@ -390,21 +388,6 @@ try {
                       </button>
                     ))}
                   </div>
-                </div>
-
-                {/* OG type selector */}
-                <div className="sp-group">
-                  <div className="sp-group-label">Simulate og:type</div>
-                  <select
-                    className="sp-type-select"
-                    value={selectedType}
-                    onChange={e => setSelectedType(e.target.value)}
-                  >
-                    <option value="website">website — Standard</option>
-                    <option value="article">article — Large layout</option>
-                    <option value="product">product — E-commerce</option>
-                    <option value="video.other">video — Media</option>
-                  </select>
                 </div>
 
               </div>
