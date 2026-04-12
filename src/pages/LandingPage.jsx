@@ -31,8 +31,11 @@ export default function LandingPage() {
   const [ctaDomain, setCtaDomain] = useState('');
   const navigate = useNavigate();
   const handleAnalyze = (targetUrl) => {
-    if (!targetUrl) return;
-    // Encode the URL so it's safe to pass in the address bar
+    console.log("Analyzing URL:", targetUrl); // Add this
+    if (!targetUrl) {
+      alert("Please enter a domain first!"); // Feedback is better than a silent return
+      return;
+    }
     const encodedUrl = encodeURIComponent(targetUrl);
     navigate(`/analyze?url=${encodedUrl}`);
   };
@@ -54,21 +57,18 @@ export default function LandingPage() {
               Actionable data, zero bloat — just the insights that move rankings.
             </p>
             <div className="lp-hero-form" role="search">
-              <input
-                type="url"
-                className="lp-hero-input"
-                placeholder="yourdomain.com"
-                value={domain}
-                onChange={e => setDomain(e.target.value)}
-                aria-label="Enter your domain to analyze"
-              />
-              <button 
-  className="lp-hero-btn" 
-  onClick={() => handleAnalyze(domain)}
-  aria-label="Analyze site">
-  Analyze site →
-</button>
-            </div>
+                <input
+                  type="url"
+                  className="lp-hero-input"
+                  placeholder="yourdomain.com"
+                  value={domain}
+                  onChange={e => setDomain(e.target.value)}
+                  aria-label="Enter your domain"
+                />
+                <button className="lp-hero-btn" aria-label="Analyze your site" onClick={() => handleAnalyze(domain)}>
+                  Analyze Site
+                </button>
+              </div>
             <p className="lp-hero-trust">
               Trusted by <strong>2,000+ digital agencies</strong> worldwide &mdash; no credit card required
             </p>

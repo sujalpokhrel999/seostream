@@ -80,6 +80,7 @@
   }
   .lp-hero-bg {
     position: absolute;
+    z-index:-1;
     inset: 0;
     background:
       radial-gradient(ellipse 60% 50% at 80% 50%, rgba(200,240,224,0.08) 0%, transparent 70%),

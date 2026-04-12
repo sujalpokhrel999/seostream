@@ -58,7 +58,8 @@
 }
 
 .footer-links a {
-  display: block;
+  display: flex;
+  flex-direction: column;
   color: var(--pale-slate-2);
   text-decoration: none;
   font-size: 16px;
